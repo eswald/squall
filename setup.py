@@ -51,6 +51,7 @@ setup(
     classifiers = [
         "Development Status :: 1 - Planning",
         "Environment :: X11 Applications",
+        "Environment :: X11 Applications :: Qt",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Natural Language :: English",
