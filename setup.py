@@ -35,6 +35,7 @@ setup(
         "console_scripts": [
         ],
         "gui_scripts": [
+            "squall = squall.main:main",
         ],
     },
     
