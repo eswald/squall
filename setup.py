@@ -1,7 +1,8 @@
 r'''Squall installation script
     Usage: python setup.py install
     
-    This script relies on setuptools and/or distribute.
+    This script uses setuptools and/or distribute if available.
+    Installation of the `squall` command probably requires them.
 '''#"""#'''
 
 # Copyright 2012 Eric Wald
@@ -18,7 +19,10 @@ r'''Squall installation script
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 try:
     readme = open('README.txt').read()
@@ -62,6 +66,6 @@ setup(
     ],
     
     # Installation options
-    zip_safe = True,
+    zip_safe = False,
     install_requires = ["distribute"],
 )
