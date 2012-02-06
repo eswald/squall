@@ -34,7 +34,7 @@ setup(
     # Provided items
     name = "Squall",
     version = "0.1a",
-    packages = ["squall"],
+    packages = ["squall", "squall.gui"],
     entry_points = {
         "console_scripts": [
         ],
