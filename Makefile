@@ -8,3 +8,6 @@ interfaces: $(widgets:$(gui)/%.ui=$(gui)/Ui_%.py)
 $(gui)/Ui_%.py: $(gui)/%.ui
 	# $@: $?
 	pyuic4 -x "$<" > "$@"
+
+clean:
+	rm -rfv Squall.egg-info dist
