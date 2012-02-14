@@ -15,8 +15,9 @@ r'''Squall main application
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from PyQt4.QtGui import QApplication, QMainWindow
+from PyQt4.QtGui import QApplication, QMainWindow, QSplitter
 from squall.gui.Ui_window import Ui_MainWindow
+from squall.gui.Ui_tripane import Ui_Tripane
 import sys
 
 def main():
@@ -24,6 +25,12 @@ def main():
     MainWindow = QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    
+    Tripane = QSplitter(MainWindow)
+    tripane = Ui_Tripane()
+    tripane.setupUi(Tripane)
+    MainWindow.setCentralWidget(Tripane)
+    
     MainWindow.show()
     sys.exit(app.exec_())
 
