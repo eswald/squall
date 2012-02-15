@@ -18,6 +18,7 @@ r'''Squall main application
 from PyQt4.QtGui import QApplication, QMainWindow, QSplitter
 from squall.gui.Ui_window import Ui_MainWindow
 from squall.gui.Ui_tripane import Ui_Tripane
+from squall.treepane import populate
 import sys
 
 def main():
@@ -30,6 +31,8 @@ def main():
     tripane = Ui_Tripane()
     tripane.setupUi(Tripane)
     MainWindow.setCentralWidget(Tripane)
+    
+    ui.actionConnect.triggered.connect(lambda *args: populate(tripane.treeView))
     
     MainWindow.show()
     sys.exit(app.exec_())

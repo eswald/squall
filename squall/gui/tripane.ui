@@ -37,7 +37,14 @@
   <property name="orientation">
    <enum>Qt::Horizontal</enum>
   </property>
-  <widget class="QTreeView" name="treeView"/>
+  <widget class="QTreeView" name="treeView">
+   <property name="indentation">
+    <number>15</number>
+   </property>
+   <property name="uniformRowHeights">
+    <bool>true</bool>
+   </property>
+  </widget>
   <widget class="QSplitter" name="splitter">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
