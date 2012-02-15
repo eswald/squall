@@ -28,6 +28,10 @@
   <property name="windowTitle">
    <string>Squall</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../icons/icons.qrc">
+    <normaloff>:/icons/squall.png</normaloff>:/icons/squall.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -157,7 +161,9 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../icons/icons.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionExit</sender>

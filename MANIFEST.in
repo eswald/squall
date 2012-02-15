@@ -1,3 +1,5 @@
 include *.txt
 include makefile
 recursive-include squall *.ui
+recursive-include squall *.qrc
+recursive-include squall *.png
