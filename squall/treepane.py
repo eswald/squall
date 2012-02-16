@@ -18,8 +18,13 @@ r'''Squall schema tree implementation.
 # limitations under the License.
 
 from PyQt4.QtCore import QAbstractItemModel, QModelIndex, Qt
+from PyQt4.QtGui import QIcon, QPixmap
+import squall.gui.icons_rc
 
 class TreeItem(object):
+    icon_name = None
+    _icon = None
+    
     def __init__(self, data, parent = None):
         self.parentItem = parent
         self.itemData = data
@@ -45,23 +50,40 @@ class TreeItem(object):
         '''#"""#'''
         for n in range(1,3):
             yield Server(["Server "+str(n)], self)
+    
+    def icon(self):
+        if self.icon_name and not self._icon:
+            print "Creating icon %s for %s" % (self.icon_name, self.__class__.__name__)
+            icon = QIcon()
+            icon.addPixmap(QPixmap(self.icon_name), QIcon.Normal, QIcon.Off)
+            self.__class__._icon = icon
+        return self._icon
 
 class Server(TreeItem):
+    icon_name = ":/silk/server.png"
+    
     def collect(self):
         for n in range(1,3):
             yield Schema(["Schema "+str(n)], self)
 
 class Schema(TreeItem):
+    icon_name = ":/silk/database.png"
+    
     def collect(self):
         for n in range(1,5):
             yield Table(["Table "+str(n)], self)
 
 class Table(TreeItem):
+    icon_name = ":/silk/table.png"
+    
     def collect(self):
         for n in range(1,8):
             yield Column(["Column "+str(n), "int(10) unsigned not null default 1"], self)
 
 class Column(TreeItem):
+    # Todo: Consider basing the icon on the data type.
+    icon_name = ":/silk/text_columns.png"
+    
     def collect(self):
         return []
 
@@ -98,8 +120,11 @@ class TreeModel(QAbstractItemModel):
         return 2
     
     def data(self, index, role):
-        if index.isValid() and role == Qt.DisplayRole:
-            return index.internalPointer().data(index.column())
+        if index.isValid():
+            if role == Qt.DisplayRole:
+                return index.internalPointer().data(index.column())
+            elif role == Qt.DecorationRole and index.column() == 0:
+                return index.internalPointer().icon()
     
     def flags(self, index):
         if not index.isValid():

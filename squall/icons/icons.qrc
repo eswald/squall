@@ -2,4 +2,10 @@
   <qresource prefix="icons">
     <file>squall.png</file>
   </qresource>
+  <qresource prefix="silk">
+    <file>database.png</file>
+    <file>server.png</file>
+    <file>text_columns.png</file>
+    <file>table.png</file>
+  </qresource>
 </RCC>
